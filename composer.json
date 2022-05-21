@@ -1,0 +1,43 @@
+{
+    "name": "sbsedv/form-bundle",
+    "description": "A Symfony ^6.0 bundle that adds some usefull symfony/form integrations.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Burger",
+            "homepage": "https://github.com/danielburger1337"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SBSEDV\\Bundle\\FormBundle\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "symfony/form": "^6.0",
+        "symfony/framework-bundle": "^6.0",
+        "symfony/security-csrf": "^6.0",
+        "symfony/serializer": "^6.0",
+        "symfony/translation": "^6.0",
+        "symfony/uid": "^6.0",
+        "symfony/validator": "^6.0"
+    },
+    "require-dev": {
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan-symfony": "^1.1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    }
+}
