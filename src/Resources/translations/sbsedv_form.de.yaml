@@ -1,0 +1,3 @@
+request_body_is_empty: Der HTTP-Anfragetext entählt keine verwendbaren Werte.
+
+invalid_boolean_string: Bitte geben Sie einen gültigen Booleanwert ein.

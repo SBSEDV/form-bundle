@@ -1,0 +1,3 @@
+request_body_is_empty: The request body does not contain any usable data.
+
+invalid_boolean_string: Please enter a boolean value.
