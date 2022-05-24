@@ -24,6 +24,10 @@ class ConstraintViolationCauseResolver implements CauseResolverInterface
             return null;
         }
 
-        return $constraint->getErrorName($code);
+        try {
+            return $constraint->getErrorName($code);
+        } catch (\InvalidArgumentException) {
+            return $code;
+        }
     }
 }
