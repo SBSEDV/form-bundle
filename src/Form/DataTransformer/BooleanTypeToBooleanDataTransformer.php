@@ -6,7 +6,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
- * @implements DataTransformerInterface<bool, bool>
+ * @implements DataTransformerInterface<bool, string>
  */
 class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
 {
@@ -19,17 +19,17 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(mixed $value): bool
+    public function transform(mixed $value): string
     {
         if (null === $value) {
-            return false;
+            return 'false';
         }
 
         if (!\is_bool($value)) {
             throw new TransformationFailedException(\sprintf('Expected type bool, found "%s".', \get_debug_type($value)));
         }
 
-        return $value;
+        return $value ? 'true' : 'false';
     }
 
     /**
