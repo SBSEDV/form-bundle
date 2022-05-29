@@ -1,20 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace SBSEDV\Bundle\FormBundle\DependencyInjection;
+namespace Symfony\Component\Config\Definition\Configurator;
 
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
-
-class Configuration implements ConfigurationInterface
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder(): TreeBuilder
-    {
-        $treeBuilder = new TreeBuilder('sbsedv_form');
-
-        $treeBuilder->getRootNode()
+return function (DefinitionConfigurator $definitionConfigurator): void {
+    $definitionConfigurator
+        ->rootNode()
             ->children()
                 ->arrayNode('cause_resolver')
                     ->addDefaultsIfNotSet()
@@ -33,8 +23,6 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
-        ;
-
-        return $treeBuilder;
-    }
-}
+        ->end()
+    ;
+};
