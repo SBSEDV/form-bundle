@@ -1,6 +1,6 @@
 {
     "name": "sbsedv/form-bundle",
-    "description": "A Symfony ^6.0 bundle that adds some usefull symfony/form integrations.",
+    "description": "A Symfony ^6.1 bundle that adds some usefull symfony/form integrations.",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [

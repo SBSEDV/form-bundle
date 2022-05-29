@@ -1,6 +1,6 @@
 # sbsedv/form-bundle
 
-A [Symfony ^6.0](https://symfony.com/) bundle that adds some usefull [symfony/form](https://github.com/symfony/form) integrations.
+A [Symfony ^6.1](https://symfony.com/) bundle that adds some usefull [symfony/form](https://github.com/symfony/form) integrations.
 
 ---
 
