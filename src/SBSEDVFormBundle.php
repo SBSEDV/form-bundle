@@ -25,23 +25,23 @@ class SBSEDVFormBundle extends AbstractBundle
             ->addTag('sbsedv_form.cause_resolver')
         ;
 
-        if ($config['cause_resolver']['string'] === true) {
+        if (!$config['cause_resolver']['string']) {
             $container->services()->remove(CauseResolver\StringCauseResolver::class);
         }
 
-        if ($config['cause_resolver']['stringable'] === true) {
+        if (!$config['cause_resolver']['stringable']) {
             $container->services()->remove(CauseResolver\StringableCauseResolver::class);
         }
 
-        if ($config['cause_resolver']['invalid_choice'] === true) {
+        if (!$config['cause_resolver']['invalid_choice']) {
             $container->services()->remove(CauseResolver\InvalidChoiceCauseResolver::class);
         }
 
-        if ($config['cause_resolver']['csrf_token'] === true) {
+        if (!$config['cause_resolver']['csrf_token']) {
             $container->services()->remove(CauseResolver\CsrfTokenCauseResolver::class);
         }
 
-        if ($config['cause_resolver']['constraint_violation'] === true) {
+        if (!$config['cause_resolver']['constraint_violation']) {
             $container->services()->remove(CauseResolver\ConstraintViolationCauseResolver::class);
         }
 
@@ -50,7 +50,7 @@ class SBSEDVFormBundle extends AbstractBundle
             ->addTag('sbsedv_form.param_resolver')
         ;
 
-        if ($config['param_resolver']['property_path'] === true) {
+        if (!$config['param_resolver']['property_path']) {
             $container->services()->remove(ParamResolver\PropertyPathParamResolver::class);
         }
     }
