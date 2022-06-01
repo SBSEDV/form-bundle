@@ -2,18 +2,17 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use SBSEDV\Bundle\FormBundle\Form\Extension\UuidTypeExtension;
-use SBSEDV\Bundle\FormBundle\Form\Type\BooleanType;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use SBSEDV\Bundle\FormBundle\Form\FormProcessor;
+use SBSEDV\Bundle\FormBundle\Form\FormProcessorInterface;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 return function (ContainerConfigurator $container): void {
     $container->services()
-        ->set(BooleanType::class)
+        ->set(FormProcessor::class)
             ->args([
-                '$translator' => service(TranslatorInterface::class),
+                '$propertyAccessor' => service(PropertyAccessorInterface::class)->nullOnInvalid(),
             ])
 
-        ->set(UuidTypeExtension::class)
-            ->tag('form.type_extension')
+        ->alias(FormProcessorInterface::class, FormProcessor::class)
     ;
 };
