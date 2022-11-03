@@ -2,11 +2,15 @@
 
 namespace SBSEDV\Bundle\FormBundle\Form\DataTransformer;
 
-use Symfony\Component\Form\Extension\Core\DataTransformer\UuidToStringTransformer as SymfonyUuidToStringTransformer;
+use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Uid\NilUuid;
 use Symfony\Component\Uid\Uuid;
 
-class UuidToStringDataTransformer extends SymfonyUuidToStringTransformer
+/**
+ * @implements DataTransformerInterface<Uuid, string>
+ */
+class UuidToStringDataTransformer implements DataTransformerInterface
 {
     protected const NIL = '00000000-0000-0000-0000-000000000000';
 
@@ -20,7 +24,15 @@ class UuidToStringDataTransformer extends SymfonyUuidToStringTransformer
      */
     public function transform(mixed $value): ?string
     {
-        $value = parent::transform($value);
+        if (null === $value) {
+            return null;
+        }
+
+        if (!$value instanceof Uuid) {
+            throw new TransformationFailedException('Expected a Uuid.');
+        }
+
+        $value = (string) $value;
 
         if ($this->convertNilToNull && $value === self::NIL) {
             return null;
@@ -34,12 +46,24 @@ class UuidToStringDataTransformer extends SymfonyUuidToStringTransformer
      */
     public function reverseTransform(mixed $value): ?Uuid
     {
-        $value = parent::reverseTransform($value);
-
-        if ($value instanceof Uuid && (string) $value === self::NIL) {
-            $value = $this->convertNilToNull ? null : new NilUuid();
+        if (null === $value || '' === $value) {
+            return null;
         }
 
-        return $value;
+        if (!\is_string($value)) {
+            throw new TransformationFailedException('Expected a string.');
+        }
+
+        try {
+            $uuid = new Uuid($value);
+        } catch (\InvalidArgumentException $e) {
+            throw new TransformationFailedException(\sprintf('The value "%s" is not a valid UUID.', $value), $e->getCode(), $e);
+        }
+
+        if ($uuid instanceof Uuid && (string) $uuid === self::NIL) {
+            $uuid = $this->convertNilToNull ? null : new NilUuid();
+        }
+
+        return $uuid;
     }
 }
