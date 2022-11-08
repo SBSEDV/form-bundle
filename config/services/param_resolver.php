@@ -3,6 +3,7 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use SBSEDV\Bundle\FormBundle\ParamResolver\ChainParamResolver;
+use SBSEDV\Bundle\FormBundle\ParamResolver\ConstraintViolationCustomErrorKeyParamResolver;
 use SBSEDV\Bundle\FormBundle\ParamResolver\ParamResolverInterface;
 use SBSEDV\Bundle\FormBundle\ParamResolver\PropertyPathParamResolver;
 
@@ -15,5 +16,9 @@ return function (ContainerConfigurator $container): void {
 
         ->set(PropertyPathParamResolver::class)
             ->tag('sbsedv_form.param_resolver', ['priority' => -9999])
+
+        ->set(ConstraintViolationCustomErrorKeyParamResolver::class)
+            ->tag('sbsedv_form.param_resolver')
+
     ;
 };
