@@ -21,7 +21,7 @@ class StringToUuidDataTransformer implements DataTransformerInterface
         }
 
         try {
-            $value = new Uuid($value);
+            $value = Uuid::fromString($value);
         } catch (\Throwable $e) {
             throw new TransformationFailedException(previous: $e);
         }
@@ -42,6 +42,6 @@ class StringToUuidDataTransformer implements DataTransformerInterface
             throw new TransformationFailedException('Expected type Uuid, found '.\get_debug_type($value));
         }
 
-        return (string) $value;
+        return $value->toRfc4122();
     }
 }

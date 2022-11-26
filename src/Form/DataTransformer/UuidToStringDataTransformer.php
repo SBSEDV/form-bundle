@@ -32,7 +32,7 @@ class UuidToStringDataTransformer implements DataTransformerInterface
             throw new TransformationFailedException('Expected a Uuid.');
         }
 
-        $value = (string) $value;
+        $value = $value->toRfc4122();
 
         if ($this->convertNilToNull && $value === self::NIL) {
             return null;
@@ -55,13 +55,13 @@ class UuidToStringDataTransformer implements DataTransformerInterface
         }
 
         try {
-            $uuid = new Uuid($value);
+            $uuid = Uuid::fromString($value);
         } catch (\InvalidArgumentException $e) {
             throw new TransformationFailedException(\sprintf('The value "%s" is not a valid UUID.', $value), $e->getCode(), $e);
         }
 
-        if ($uuid instanceof Uuid && (string) $uuid === self::NIL) {
-            $uuid = $this->convertNilToNull ? null : new NilUuid();
+        if ($uuid instanceof NilUuid && $this->convertNilToNull) {
+            $uuid = null;
         }
 
         return $uuid;
