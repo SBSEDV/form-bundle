@@ -21,7 +21,11 @@ class BooleanType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->addModelTransformer(new BooleanTypeToBooleanDataTransformer($options['true_values'], $options['false_values'])) // @phpstan-ignore-line
+            ->addModelTransformer(new BooleanTypeToBooleanDataTransformer(
+                $options['true_values'], // @phpstan-ignore-line
+                $options['false_values'], // @phpstan-ignore-line
+                $options['default_value'] // @phpstan-ignore-line
+            ))
         ;
     }
 
@@ -34,7 +38,10 @@ class BooleanType extends AbstractType
             'compound' => false,
             'true_values' => ['true', true, 'yes', 'y', 'on', '1', 1],
             'false_values' => ['false', false, 'no', 'n', 'off', '0', 0],
+            'default_value' => false,
             'invalid_message' => $this->translator->trans('invalid_boolean_string', domain: 'sbsedv_form'),
         ]);
+
+        $resolver->setAllowedTypes('default_value', ['bool', 'null']);
     }
 }

@@ -6,13 +6,14 @@ use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
- * @implements DataTransformerInterface<bool, string>
+ * @implements DataTransformerInterface<bool|null, string>
  */
 class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
 {
     public function __construct(
         private array $trueValues,
-        private array $falseValues
+        private array $falseValues,
+        private ?bool $default = null
     ) {
     }
 
@@ -22,7 +23,11 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
     public function transform(mixed $value): string
     {
         if (null === $value) {
-            return 'false';
+            if (null === $this->default) {
+                return '';
+            }
+
+            return $this->default ? 'true' : 'false';
         }
 
         if (!\is_bool($value)) {
@@ -35,10 +40,10 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform(mixed $value): bool
+    public function reverseTransform(mixed $value): ?bool
     {
         if (null === $value) {
-            return false;
+            return $this->default;
         }
 
         if (\is_string($value)) {
