@@ -1,3 +1,6 @@
+[![PHPStan](https://github.com/SBSEDV/form-bundle/actions/workflows/phpstan.yml/badge.svg)](https://github.com/SBSEDV/form-bundle/actions/workflows/phpstan.yml)
+[![PHPCS-Fixer](https://github.com/SBSEDV/form-bundle/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/SBSEDV/form-bundle/actions/workflows/phpcsfixer.yml)
+
 # sbsedv/form-bundle
 
 A [Symfony ^6.1](https://symfony.com/) bundle that adds some usefull [symfony/form](https://github.com/symfony/form) integrations.
