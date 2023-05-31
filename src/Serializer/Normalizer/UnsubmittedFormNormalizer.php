@@ -48,4 +48,11 @@ class UnsubmittedFormNormalizer implements NormalizerInterface, CacheableSupport
     {
         return true;
     }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            FormInterface::class => __CLASS__ === static::class,
+        ];
+    }
 }
