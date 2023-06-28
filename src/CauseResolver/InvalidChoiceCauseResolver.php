@@ -2,6 +2,7 @@
 
 namespace SBSEDV\Bundle\FormBundle\CauseResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\DoctrineType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Validator\Constraints\Form;
@@ -17,7 +18,7 @@ class InvalidChoiceCauseResolver implements CauseResolverInterface
         if ($cause instanceof ConstraintViolation && $cause->getCode() === Form::NOT_SYNCHRONIZED_ERROR) {
             $innerType = $formError->getOrigin()?->getConfig()->getType()->getInnerType();
 
-            if ($innerType instanceof ChoiceType || $innerType instanceof EnumType) {
+            if ($innerType instanceof ChoiceType || $innerType instanceof EnumType || $innerType instanceof DoctrineType) {
                 return 'invalid_choice';
             }
         }
