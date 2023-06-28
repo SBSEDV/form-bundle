@@ -19,9 +19,6 @@ class UuidToStringDataTransformer implements DataTransformerInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function transform(mixed $value): ?string
     {
         if (null === $value) {
@@ -41,9 +38,6 @@ class UuidToStringDataTransformer implements DataTransformerInterface
         return $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function reverseTransform(mixed $value): ?Uuid
     {
         if (null === $value || '' === $value) {

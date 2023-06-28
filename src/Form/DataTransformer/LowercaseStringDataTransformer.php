@@ -14,17 +14,11 @@ class LowercaseStringDataTransformer implements DataTransformerInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function transform(mixed $value): ?string
     {
         return $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function reverseTransform(mixed $value): ?string
     {
         if (\is_string($value)) {

@@ -15,9 +15,6 @@ class FormProcessor implements FormProcessorInterface
         $this->propertyAccessor = $propertyAccessor ?? PropertyAccess::createPropertyAccessor();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function processForm(FormInterface $form, object &$object, array $ignoredKeys = []): void
     {
         /** @var FormInterface $childForm */

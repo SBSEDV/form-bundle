@@ -11,9 +11,6 @@ use Symfony\Component\Uid\Uuid;
  */
 class StringToUuidDataTransformer implements DataTransformerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function transform(mixed $value): ?Uuid
     {
         if (null === $value) {
@@ -29,9 +26,6 @@ class StringToUuidDataTransformer implements DataTransformerInterface
         return $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function reverseTransform(mixed $value): ?string
     {
         if (null === $value) {

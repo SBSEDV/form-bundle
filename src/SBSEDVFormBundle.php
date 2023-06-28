@@ -9,9 +9,6 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class SBSEDVFormBundle extends AbstractBundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->import('../config/services/cause_resolver.php');
@@ -55,9 +52,6 @@ class SBSEDVFormBundle extends AbstractBundle
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configure(DefinitionConfigurator $definition): void
     {
         $definition->import('../config/definition.php');

@@ -7,9 +7,6 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 class ConstraintViolationCustomErrorKeyParamResolver implements ParamResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveParam(FormError $formError): ?string
     {
         $cause = $formError->getCause();

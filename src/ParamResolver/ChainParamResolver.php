@@ -14,9 +14,6 @@ class ChainParamResolver implements ParamResolverInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function resolveParam(FormError $formError): ?string
     {
         foreach ($this->paramResolvers as $paramResolver) {

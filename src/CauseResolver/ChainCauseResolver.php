@@ -14,9 +14,6 @@ class ChainCauseResolver implements CauseResolverInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function resolveCause(FormError $formError): ?string
     {
         foreach ($this->causeResolvers as $causeResolver) {

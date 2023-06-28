@@ -21,8 +21,6 @@ class UnsubmittedFormNormalizer implements NormalizerInterface, CacheableSupport
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param FormInterface $object
      */
     public function normalize(mixed $object, string $format = null, array $context = []): array
@@ -33,17 +31,11 @@ class UnsubmittedFormNormalizer implements NormalizerInterface, CacheableSupport
         ]];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof FormInterface && !$data->isSubmitted();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

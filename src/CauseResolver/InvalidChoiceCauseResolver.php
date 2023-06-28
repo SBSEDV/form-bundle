@@ -10,9 +10,6 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 class InvalidChoiceCauseResolver implements CauseResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveCause(FormError $formError): ?string
     {
         $cause = $formError->getCause();

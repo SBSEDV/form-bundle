@@ -17,9 +17,6 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function transform(mixed $value): string
     {
         if (null === $value) {
@@ -37,9 +34,6 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
         return $value ? 'true' : 'false';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function reverseTransform(mixed $value): ?bool
     {
         if (null === $value) {

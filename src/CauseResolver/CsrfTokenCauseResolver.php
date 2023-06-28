@@ -7,9 +7,6 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 
 class CsrfTokenCauseResolver implements CauseResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveCause(FormError $formError): ?string
     {
         $cause = $formError->getCause();

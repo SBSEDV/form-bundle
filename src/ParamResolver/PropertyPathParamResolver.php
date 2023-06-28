@@ -6,9 +6,6 @@ use Symfony\Component\Form\FormError;
 
 class PropertyPathParamResolver implements ParamResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveParam(FormError $formError): ?string
     {
         $origin = $formError->getOrigin();

@@ -6,9 +6,6 @@ use Symfony\Component\Form\FormError;
 
 class StringCauseResolver implements CauseResolverInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function resolveCause(FormError $formError): ?string
     {
         if (\is_string($formError->getCause())) {

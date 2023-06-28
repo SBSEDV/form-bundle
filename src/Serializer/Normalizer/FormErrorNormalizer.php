@@ -30,8 +30,6 @@ class FormErrorNormalizer implements NormalizerInterface, CacheableSupportsMetho
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param FormInterface $object
      */
     public function normalize(mixed $object, string $format = null, array $context = []): array
@@ -75,17 +73,11 @@ class FormErrorNormalizer implements NormalizerInterface, CacheableSupportsMetho
         return $errors;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $data instanceof FormInterface && $data->isSubmitted() && !$data->isValid();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;
