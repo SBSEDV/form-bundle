@@ -3,6 +3,7 @@
 namespace SBSEDV\Bundle\FormBundle\Serializer\Normalizer;
 
 use SBSEDV\Bundle\FormBundle\CauseResolver\CauseResolverInterface;
+use SBSEDV\Bundle\FormBundle\MessageResolver\MessageResolverInterface;
 use SBSEDV\Bundle\FormBundle\ParamResolver\ParamResolverInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
@@ -19,13 +20,13 @@ class FormErrorNormalizer implements NormalizerInterface, CacheableSupportsMetho
     public const CONTEXT_CAUSE_KEY = 'form_error.cause_key';
     /** The value will be used as the normalized "type" key */
     public const CONTEXT_TYPE_KEY = 'form_error.type_key';
-
     /** The value that will appear under the "type" key. */
     public const CONTEXT_ERROR_TYPE = 'form_error.type';
 
     public function __construct(
         private CauseResolverInterface $causeResolver,
-        private ParamResolverInterface $paramResolver
+        private ParamResolverInterface $paramResolver,
+        private MessageResolverInterface $messageResolver
     ) {
     }
 
@@ -53,7 +54,7 @@ class FormErrorNormalizer implements NormalizerInterface, CacheableSupportsMetho
             }
 
             $error = [
-                $messageKey => $formError->getMessage(),
+                $messageKey => $this->messageResolver->resolveMessage($formError) ?? $formError->getMessage(),
                 $typeKey => $errorType,
             ];
 

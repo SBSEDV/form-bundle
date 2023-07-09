@@ -3,6 +3,7 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use SBSEDV\Bundle\FormBundle\CauseResolver\CauseResolverInterface;
+use SBSEDV\Bundle\FormBundle\MessageResolver\MessageResolverInterface;
 use SBSEDV\Bundle\FormBundle\ParamResolver\ParamResolverInterface;
 use SBSEDV\Bundle\FormBundle\Serializer\Normalizer\FormErrorNormalizer;
 use SBSEDV\Bundle\FormBundle\Serializer\Normalizer\UnsubmittedFormNormalizer;
@@ -20,6 +21,7 @@ return function (ContainerConfigurator $container): void {
             ->args([
                 '$causeResolver' => service(CauseResolverInterface::class),
                 '$paramResolver' => service(ParamResolverInterface::class),
+                '$messageResolver' => service(MessageResolverInterface::class),
             ])
             ->tag('serializer.normalizer', ['priority' => 0])
     ;
