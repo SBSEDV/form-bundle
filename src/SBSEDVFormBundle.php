@@ -38,6 +38,10 @@ class SBSEDVFormBundle extends AbstractBundle
             $container->services()->remove(CauseResolver\CsrfTokenCauseResolver::class);
         }
 
+        if (!$config['cause_resolver']['doctrine_type']) {
+            $container->services()->remove(CauseResolver\DoctrineTypeCauseResolver::class);
+        }
+
         if (!$config['cause_resolver']['constraint_violation']) {
             $container->services()->remove(CauseResolver\ConstraintViolationCauseResolver::class);
         }

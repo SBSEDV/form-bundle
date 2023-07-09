@@ -11,6 +11,7 @@ return function (DefinitionConfigurator $definitionConfigurator): void {
                     ->children()
                         ->booleanNode('constraint_violation')->defaultTrue()->end()
                         ->booleanNode('csrf_token')->defaultTrue()->end()
+                        ->booleanNode('doctrine_type')->defaultTrue()->end()
                         ->booleanNode('invalid_choice')->defaultTrue()->end()
                         ->booleanNode('string')->defaultTrue()->end()
                         ->booleanNode('stringable')->defaultTrue()->end()
