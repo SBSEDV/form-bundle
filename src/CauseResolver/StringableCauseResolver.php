@@ -10,7 +10,7 @@ class StringableCauseResolver implements CauseResolverInterface
     {
         $cause = $formError->getCause();
 
-        if ($cause instanceof \Stringable) {
+        if ($cause instanceof \Stringable && !$cause instanceof \Throwable) {
             return (string) $cause;
         }
 
