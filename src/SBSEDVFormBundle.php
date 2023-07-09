@@ -2,7 +2,6 @@
 
 namespace SBSEDV\Bundle\FormBundle;
 
-use SBSEDV\Bundle\FormBundle\MessageResolver\MessageResolverInterface;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -20,13 +19,16 @@ class SBSEDVFormBundle extends AbstractBundle
         $container->import('../config/services/param_resolver.php');
 
         $builder
-            ->registerForAutoconfiguration(CauseResolver\CauseResolverInterface::class)
-            ->addTag('sbsedv_form.cause_resolver')
+            ->registerForAutoconfiguration(MessageResolver\MessageResolverInterface::class)
+            ->addTag('sbsedv_form.message_resolver')
         ;
+        if (!$config['message_resolver']['doctrine_type']) {
+            $container->services()->remove(MessageResolver\DoctrineTypeMessageResolver::class);
+        }
 
         $builder
-            ->registerForAutoconfiguration(MessageResolverInterface::class)
-            ->addTag('sbsedv_form.message_resolver')
+            ->registerForAutoconfiguration(CauseResolver\CauseResolverInterface::class)
+            ->addTag('sbsedv_form.cause_resolver')
         ;
 
         if (!$config['cause_resolver']['string']) {
