@@ -6,6 +6,7 @@ use SBSEDV\Bundle\FormBundle\CauseResolver\CauseResolverInterface;
 use SBSEDV\Bundle\FormBundle\CauseResolver\ChainCauseResolver;
 use SBSEDV\Bundle\FormBundle\CauseResolver\ConstraintViolationCauseResolver;
 use SBSEDV\Bundle\FormBundle\CauseResolver\CsrfTokenCauseResolver;
+use SBSEDV\Bundle\FormBundle\CauseResolver\DoctrineTypeCauseResolver;
 use SBSEDV\Bundle\FormBundle\CauseResolver\InvalidChoiceCauseResolver;
 use SBSEDV\Bundle\FormBundle\CauseResolver\StringableCauseResolver;
 use SBSEDV\Bundle\FormBundle\CauseResolver\StringCauseResolver;
@@ -32,5 +33,7 @@ return function (ContainerConfigurator $container): void {
         ->set(ConstraintViolationCauseResolver::class)
             ->tag('sbsedv_form.cause_resolver', ['priority' => -100])
 
+        ->set(DoctrineTypeCauseResolver::class)
+            ->tag('sbsedv_form.cause_resolver', ['priority' => -100])
     ;
 };
