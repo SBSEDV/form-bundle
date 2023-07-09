@@ -10,7 +10,7 @@ class ChainParamResolver implements ParamResolverInterface
      * @param iterable<ParamResolverInterface> $paramResolvers
      */
     public function __construct(
-        private iterable $paramResolvers
+        private readonly iterable $paramResolvers
     ) {
     }
 

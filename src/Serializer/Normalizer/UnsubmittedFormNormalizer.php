@@ -16,7 +16,7 @@ class UnsubmittedFormNormalizer implements NormalizerInterface, CacheableSupport
     public const CONTEXT_ERROR_TYPE = 'form_error.type';
 
     public function __construct(
-        private TranslatorInterface $translator
+        private readonly TranslatorInterface $translator
     ) {
     }
 

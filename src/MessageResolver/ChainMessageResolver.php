@@ -10,7 +10,7 @@ class ChainMessageResolver implements MessageResolverInterface
      * @param iterable<MessageResolverInterface> $messageResolvers
      */
     public function __construct(
-        private iterable $messageResolvers
+        private readonly iterable $messageResolvers
     ) {
     }
 

@@ -24,9 +24,9 @@ class FormErrorNormalizer implements NormalizerInterface, CacheableSupportsMetho
     public const CONTEXT_ERROR_TYPE = 'form_error.type';
 
     public function __construct(
-        private CauseResolverInterface $causeResolver,
-        private ParamResolverInterface $paramResolver,
-        private MessageResolverInterface $messageResolver
+        private readonly CauseResolverInterface $causeResolver,
+        private readonly ParamResolverInterface $paramResolver,
+        private readonly MessageResolverInterface $messageResolver
     ) {
     }
 

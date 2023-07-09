@@ -11,7 +11,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class BooleanType extends AbstractType
 {
     public function __construct(
-        private TranslatorInterface $translator
+        readonly TranslatorInterface $translator
     ) {
     }
 
