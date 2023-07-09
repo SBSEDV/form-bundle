@@ -11,9 +11,9 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
 {
     public function __construct(
-        private array $trueValues,
-        private array $falseValues,
-        private ?bool $default = null
+        private readonly array $trueValues,
+        private readonly array $falseValues,
+        private readonly ?bool $default = null
     ) {
     }
 

@@ -23,6 +23,12 @@ return function (DefinitionConfigurator $definitionConfigurator): void {
                         ->booleanNode('property_path')->defaultTrue()->end()
                     ->end()
                 ->end()
+                ->arrayNode('message_resolver')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('doctrine_type')->defaultTrue()->end()
+                    ->end()
+                ->end()
             ->end()
         ->end()
     ;

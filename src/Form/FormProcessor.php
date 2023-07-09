@@ -8,7 +8,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 class FormProcessor implements FormProcessorInterface
 {
-    private PropertyAccessorInterface $propertyAccessor;
+    private readonly PropertyAccessorInterface $propertyAccessor;
 
     public function __construct(?PropertyAccessorInterface $propertyAccessor)
     {

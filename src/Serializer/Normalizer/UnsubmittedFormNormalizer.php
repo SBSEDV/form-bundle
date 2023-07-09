@@ -3,11 +3,10 @@
 namespace SBSEDV\Bundle\FormBundle\Serializer\Normalizer;
 
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class UnsubmittedFormNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
+class UnsubmittedFormNormalizer implements NormalizerInterface
 {
     /** The value will be used as the normalized "message" key (e.g. "msg"). */
     public const CONTEXT_MESSAGE_KEY = 'form_error.message_key';
@@ -16,7 +15,7 @@ class UnsubmittedFormNormalizer implements NormalizerInterface, CacheableSupport
     public const CONTEXT_ERROR_TYPE = 'form_error.type';
 
     public function __construct(
-        private TranslatorInterface $translator
+        private readonly TranslatorInterface $translator
     ) {
     }
 

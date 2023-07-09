@@ -14,8 +14,17 @@ class SBSEDVFormBundle extends AbstractBundle
         $container->import('../config/services/cause_resolver.php');
         $container->import('../config/services/form_types.php');
         $container->import('../config/services/form_processor.php');
+        $container->import('../config/services/message_resolver.php');
         $container->import('../config/services/normalizers.php');
         $container->import('../config/services/param_resolver.php');
+
+        $builder
+            ->registerForAutoconfiguration(MessageResolver\MessageResolverInterface::class)
+            ->addTag('sbsedv_form.message_resolver')
+        ;
+        if (!$config['message_resolver']['doctrine_type']) {
+            $container->services()->remove(MessageResolver\DoctrineTypeMessageResolver::class);
+        }
 
         $builder
             ->registerForAutoconfiguration(CauseResolver\CauseResolverInterface::class)
