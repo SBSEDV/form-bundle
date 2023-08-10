@@ -63,6 +63,10 @@ class SBSEDVFormBundle extends AbstractBundle
         if (!$config['param_resolver']['property_path']) {
             $container->services()->remove(ParamResolver\PropertyPathParamResolver::class);
         }
+
+        if (!$config['param_resolver']['dot_encoding']) {
+            $container->services()->remove(ParamResolver\DotEncodingParamResolver::class);
+        }
     }
 
     public function configure(DefinitionConfigurator $definition): void

@@ -6,10 +6,10 @@ use Symfony\Component\Form\FormError;
 
 /**
  * @example key
- * @example key[nested]
- * @example key[nested][deeply]
+ * @example key.nested
+ * @example key.nested.deeply
  */
-class PropertyPathParamResolver implements ParamResolverInterface
+class DotEncodingParamResolver implements ParamResolverInterface
 {
     public function resolveParam(FormError $formError): ?string
     {
@@ -29,23 +29,14 @@ class PropertyPathParamResolver implements ParamResolverInterface
         }
 
         $keys = \array_reverse($keys);
-
-        $key = \str_replace(['[', ']'], '', $keys[0]);
-        unset($keys[0]);
-
-        foreach ($keys as $k) {
-            if (!\str_starts_with($k, '[')) {
-                $k = '['.$k;
-            }
-
-            if (!\str_ends_with($k, ']')) {
-                $k .= ']';
-            }
-
-            $key .= $k;
+        foreach ($keys as $k => $v) {
+            $keys[$k] = \str_replace(['[', ']'], '', $v);
         }
 
-        if ($key === '') {
+        $key = \implode('.', $keys);
+
+        // @phpstan-ignore-next-line
+        if ('' === $key) {
             return null;
         }
 

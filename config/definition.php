@@ -21,6 +21,7 @@ return function (DefinitionConfigurator $definitionConfigurator): void {
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('property_path')->defaultTrue()->end()
+                        ->booleanNode('dot_encoding')->defaultFalse()->end()
                     ->end()
                 ->end()
                 ->arrayNode('message_resolver')
