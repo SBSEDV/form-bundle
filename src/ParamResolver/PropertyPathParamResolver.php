@@ -28,7 +28,17 @@ class PropertyPathParamResolver implements ParamResolverInterface
         $key = \str_replace(['[', ']'], '', $keys[0]);
         unset($keys[0]);
 
-        $key .= \implode('', $keys);
+        foreach ($keys as $k) {
+            if (!\str_starts_with($k, '[')) {
+                $k = '['.$k;
+            }
+
+            if (!\str_ends_with($k, ']')) {
+                $k .= ']';
+            }
+
+            $key .= $k;
+        }
 
         if ($key === '') {
             return null;
