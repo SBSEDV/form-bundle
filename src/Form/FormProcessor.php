@@ -19,7 +19,7 @@ class FormProcessor implements FormProcessorInterface
     {
         /** @var FormInterface $childForm */
         foreach ($form as $childForm) {
-            if (!$childForm->getConfig()->getMapped() || \in_array($childForm->getName(), $ignoredKeys, true)) {
+            if (!$childForm->getConfig()->getMapped() || $childForm->isDisabled() || \in_array($childForm->getName(), $ignoredKeys, true)) {
                 continue;
             }
 
