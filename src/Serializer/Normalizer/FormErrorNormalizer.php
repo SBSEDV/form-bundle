@@ -25,14 +25,14 @@ class FormErrorNormalizer implements NormalizerInterface
     public function __construct(
         private readonly CauseResolverInterface $causeResolver,
         private readonly ParamResolverInterface $paramResolver,
-        private readonly MessageResolverInterface $messageResolver
+        private readonly MessageResolverInterface $messageResolver,
     ) {
     }
 
     /**
      * @param FormInterface $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         $errors = [];
 
@@ -73,7 +73,7 @@ class FormErrorNormalizer implements NormalizerInterface
         return $errors;
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof FormInterface && $data->isSubmitted() && !$data->isValid();
     }

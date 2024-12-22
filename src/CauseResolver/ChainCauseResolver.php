@@ -10,7 +10,7 @@ class ChainCauseResolver implements CauseResolverInterface
      * @param iterable<CauseResolverInterface> $causeResolvers
      */
     public function __construct(
-        private readonly iterable $causeResolvers
+        private readonly iterable $causeResolvers,
     ) {
     }
 

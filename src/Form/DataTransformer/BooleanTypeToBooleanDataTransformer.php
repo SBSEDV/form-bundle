@@ -13,7 +13,7 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
     public function __construct(
         private readonly array $trueValues,
         private readonly array $falseValues,
-        private readonly ?bool $default = null
+        private readonly ?bool $default = null,
     ) {
     }
 

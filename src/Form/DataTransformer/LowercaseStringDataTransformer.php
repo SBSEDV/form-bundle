@@ -10,7 +10,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 class LowercaseStringDataTransformer implements DataTransformerInterface
 {
     public function __construct(
-        private ?string $encoding = null
+        private ?string $encoding = null,
     ) {
     }
 

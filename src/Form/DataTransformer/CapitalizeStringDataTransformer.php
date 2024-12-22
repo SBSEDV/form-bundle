@@ -11,7 +11,7 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 class CapitalizeStringDataTransformer implements DataTransformerInterface
 {
     public function __construct(
-        private readonly ?string $encoding = null
+        private readonly ?string $encoding = null,
     ) {
     }
 

@@ -15,7 +15,7 @@ class UuidToStringDataTransformer implements DataTransformerInterface
     protected const NIL = '00000000-0000-0000-0000-000000000000';
 
     public function __construct(
-        private readonly bool $convertNilToNull = false
+        private readonly bool $convertNilToNull = false,
     ) {
     }
 

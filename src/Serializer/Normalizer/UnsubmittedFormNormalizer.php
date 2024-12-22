@@ -15,14 +15,14 @@ class UnsubmittedFormNormalizer implements NormalizerInterface
     public const CONTEXT_ERROR_TYPE = 'form_error.type';
 
     public function __construct(
-        private readonly TranslatorInterface $translator
+        private readonly TranslatorInterface $translator,
     ) {
     }
 
     /**
      * @param FormInterface $object
      */
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         return [[
             $context[self::CONTEXT_MESSAGE_KEY] ?? 'message' => $this->translator->trans('request_body_is_empty', domain: 'sbsedv_form'),
@@ -30,7 +30,7 @@ class UnsubmittedFormNormalizer implements NormalizerInterface
         ]];
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof FormInterface && !$data->isSubmitted();
     }

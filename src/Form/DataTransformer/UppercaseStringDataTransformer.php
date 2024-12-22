@@ -10,7 +10,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 class UppercaseStringDataTransformer implements DataTransformerInterface
 {
     public function __construct(
-        private readonly ?string $encoding = null
+        private readonly ?string $encoding = null,
     ) {
     }
 
