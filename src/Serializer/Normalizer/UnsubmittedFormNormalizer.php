@@ -9,11 +9,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class UnsubmittedFormNormalizer implements NormalizerInterface
 {
     /** The value will be used as the normalized "message" key (e.g. "msg"). */
-    public const CONTEXT_MESSAGE_KEY = 'form_error.message_key';
+    public const CONTEXT_MESSAGE_KEY = 'unsubmitted_form_error.message_key';
     /** The value will be used as the normalized "type" key */
-    public const CONTEXT_TYPE_KEY = 'form_error.type_key';
+    public const CONTEXT_TYPE_KEY = 'unsubmitted_form_error.type_key';
     /** The value that will appear under the "type" key. */
-    public const CONTEXT_ERROR_TYPE = 'form_error.type';
+    public const CONTEXT_ERROR_TYPE = 'unsubmitted_form_error.type';
 
     public function __construct(
         private readonly TranslatorInterface $translator,
