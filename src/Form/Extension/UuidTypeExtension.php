@@ -22,7 +22,7 @@ class UuidTypeExtension extends AbstractTypeExtension
         }
 
         $builder
-            ->addViewTransformer(new UuidToStringDataTransformer($options['nil_to_null'])) // @phpstan-ignore-line
+            ->addViewTransformer(new UuidToStringDataTransformer($options['nil_to_null'])) // @phpstan-ignore argument.type
         ;
     }
 

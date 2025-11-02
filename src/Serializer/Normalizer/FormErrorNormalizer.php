@@ -53,6 +53,7 @@ class FormErrorNormalizer implements NormalizerInterface
             }
 
             $error = [
+                // @phpstan-ignore-next-line array.invalidKey
                 $messageKey => $this->messageResolver->resolveMessage($formError) ?? $formError->getMessage(),
                 $typeKey => $errorType,
             ];

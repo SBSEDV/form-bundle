@@ -3,7 +3,7 @@
 namespace Symfony\Component\Config\Definition\Configurator;
 
 return function (DefinitionConfigurator $definitionConfigurator): void {
-    $definitionConfigurator
+    $definitionConfigurator // @phpstan-ignore method.notFound
         ->rootNode()
             ->children()
                 ->arrayNode('cause_resolver')

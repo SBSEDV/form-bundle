@@ -35,8 +35,7 @@ class DotEncodingParamResolver implements ParamResolverInterface
 
         $key = \implode('.', $keys);
 
-        // @phpstan-ignore-next-line
-        if ('' === $key) {
+        if ('' === $key) { // @phpstan-ignore identical.alwaysFalse
             return null;
         }
 

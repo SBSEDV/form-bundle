@@ -32,6 +32,7 @@ class FormProcessor implements FormProcessorInterface
             $key = $propertyPath->getElement(0);
 
             if ($childForm->isSubmitted() && $childForm->isValid()) {
+                // @phpstan-ignore-next-line parameterByRef.type
                 $this->propertyAccessor->setValue($object, $key, $childForm->getData());
             }
         }

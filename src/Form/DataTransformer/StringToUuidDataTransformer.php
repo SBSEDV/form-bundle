@@ -32,7 +32,7 @@ class StringToUuidDataTransformer implements DataTransformerInterface
             return $value;
         }
 
-        if (!$value instanceof Uuid) {
+        if (!$value instanceof Uuid) { // @phpstan-ignore instanceof.alwaysTrue
             throw new TransformationFailedException('Expected type Uuid, found '.\get_debug_type($value));
         }
 

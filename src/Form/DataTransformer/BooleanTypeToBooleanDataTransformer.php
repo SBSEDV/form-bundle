@@ -10,6 +10,10 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
 {
+    /**
+     * @param array<int|string|bool> $trueValues
+     * @param array<int|string|bool> $falseValues
+     */
     public function __construct(
         private readonly array $trueValues,
         private readonly array $falseValues,
@@ -27,7 +31,7 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
             return $this->default ? 'true' : 'false';
         }
 
-        if (!\is_bool($value)) {
+        if (!\is_bool($value)) { // @phpstan-ignore function.alreadyNarrowedType
             throw new TransformationFailedException(\sprintf('Expected type bool, found "%s".', \get_debug_type($value)));
         }
 
@@ -40,7 +44,7 @@ class BooleanTypeToBooleanDataTransformer implements DataTransformerInterface
             return $this->default;
         }
 
-        if (\is_string($value)) {
+        if (\is_string($value)) { // @phpstan-ignore function.alreadyNarrowedType
             $value = \strtolower($value);
         }
 

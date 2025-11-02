@@ -1,0 +1,10 @@
+parameters:
+    level: 9
+
+    paths:
+        - src/
+        - config/
+
+    ignoreErrors:
+        - message: '#generic interface Symfony\\Component\\Form\\FormInterface but does not specify its types: TData#'
+        - message: '#extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types: TData#'
