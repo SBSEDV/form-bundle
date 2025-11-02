@@ -10,7 +10,8 @@ class UnsubmittedFormNormalizer implements NormalizerInterface
 {
     /** The value will be used as the normalized "message" key (e.g. "msg"). */
     public const CONTEXT_MESSAGE_KEY = 'form_error.message_key';
-
+    /** The value will be used as the normalized "type" key */
+    public const CONTEXT_TYPE_KEY = 'form_error.type_key';
     /** The value that will appear under the "type" key. */
     public const CONTEXT_ERROR_TYPE = 'form_error.type';
 
@@ -24,10 +25,13 @@ class UnsubmittedFormNormalizer implements NormalizerInterface
      */
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
+        $messageKey = $context[self::CONTEXT_MESSAGE_KEY] ?? 'message';
+        $typeKey = $context[self::CONTEXT_TYPE_KEY] ?? 'type';
+
         return [[
             // @phpstan-ignore-next-line array.invalidKey
-            $context[self::CONTEXT_MESSAGE_KEY] ?? 'message' => $this->translator->trans('request_body_is_empty', domain: 'sbsedv_form'),
-            'type' => $context[self::CONTEXT_ERROR_TYPE] ?? 'invalid_request_error',
+            $messageKey => $this->translator->trans('request_body_is_empty', domain: 'sbsedv_form'),
+            $typeKey => $context[self::CONTEXT_ERROR_TYPE] ?? 'invalid_request_error',
         ]];
     }
 
