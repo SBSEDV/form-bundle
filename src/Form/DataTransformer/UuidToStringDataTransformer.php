@@ -25,7 +25,7 @@ class UuidToStringDataTransformer implements DataTransformerInterface
             return null;
         }
 
-        if (!$value instanceof Uuid) {
+        if (!$value instanceof Uuid) { // @phpstan-ignore instanceof.alwaysTrue
             throw new TransformationFailedException('Expected a Uuid.');
         }
 
@@ -44,7 +44,7 @@ class UuidToStringDataTransformer implements DataTransformerInterface
             return null;
         }
 
-        if (!\is_string($value)) {
+        if (!\is_string($value)) { // @phpstan-ignore function.alreadyNarrowedType
             throw new TransformationFailedException('Expected a string.');
         }
 

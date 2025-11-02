@@ -9,6 +9,9 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class SBSEDVFormBundle extends AbstractBundle
 {
+    /**
+     * @param array<array-key, array<array-key, mixed>> $config
+     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->import('../config/services/cause_resolver.php');

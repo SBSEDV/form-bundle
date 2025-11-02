@@ -26,7 +26,7 @@ class CapitalizeStringDataTransformer implements DataTransformerInterface
             return $value;
         }
 
-        if (!\is_string($value)) {
+        if (!\is_string($value)) { // @phpstan-ignore function.alreadyNarrowedType
             throw new TransformationFailedException('Expected type string.');
         }
 

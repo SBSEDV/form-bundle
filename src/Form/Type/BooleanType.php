@@ -19,9 +19,9 @@ class BooleanType extends AbstractType
     {
         $builder
             ->addModelTransformer(new BooleanTypeToBooleanDataTransformer(
-                $options['true_values'], // @phpstan-ignore-line
-                $options['false_values'], // @phpstan-ignore-line
-                $options['default_value'] // @phpstan-ignore-line
+                $options['true_values'], // @phpstan-ignore argument.type
+                $options['false_values'], // @phpstan-ignore argument.type
+                $options['default_value'] // @phpstan-ignore argument.type
             ))
         ;
     }
@@ -37,5 +37,7 @@ class BooleanType extends AbstractType
         ]);
 
         $resolver->setAllowedTypes('default_value', ['bool', 'null']);
+        $resolver->setAllowedTypes('true_values', 'array');
+        $resolver->setAllowedTypes('false_values', 'array');
     }
 }

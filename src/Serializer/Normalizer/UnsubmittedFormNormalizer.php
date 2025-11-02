@@ -25,6 +25,7 @@ class UnsubmittedFormNormalizer implements NormalizerInterface
     public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         return [[
+            // @phpstan-ignore-next-line array.invalidKey
             $context[self::CONTEXT_MESSAGE_KEY] ?? 'message' => $this->translator->trans('request_body_is_empty', domain: 'sbsedv_form'),
             'type' => $context[self::CONTEXT_ERROR_TYPE] ?? 'invalid_request_error',
         ]];
