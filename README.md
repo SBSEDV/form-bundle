@@ -13,7 +13,7 @@ This bundle registers two [symfony/serializer](https://github.com/symfony/serial
 
 #### [**FormErrorNormalizer**](./src/Serializer/Normalizer/FormErrorNormalizer.php)
 
-The most important normalizer. This normalizer supports submitted, invalid form.
+The most important normalizer. This normalizer supports submitted, invalid forms.
 
 The normalized data is an associative array with the following structure:
 
@@ -43,7 +43,7 @@ See [FormErrorNormalizer](./src/Serializer/Normalizer/FormErrorNormalizer.php).
 
 #### [**UnsubmittedFormNormalizer**](./src/Serializer/Normalizer/UnsubmittedFormNormalizer.php)
 
-This normalizer supports unsubmitted.
+This normalizer supports unsubmitted forms.
 
 The normalized data is an associative array with the following structure:
 
