@@ -18,7 +18,7 @@ jobs:
         name: PHPCSFixer with PHP ${{ matrix.php_version }}
 
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -26,7 +26,7 @@ jobs:
                   php-version: ${{ matrix.php_version }}
 
             - name: Install Composer packages
-              run: composer install -q --no-ansi --no-interaction --prefer-dist
+              run: composer install -q --no-ansi --no-interaction --prefer-dist --ignore-platform-reqs
 
             - name: Run PHPCSFixer
               run: $GITHUB_WORKSPACE/vendor/bin/php-cs-fixer fix --dry-run
